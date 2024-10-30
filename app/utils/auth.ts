@@ -8,3 +8,4 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [GitHub, Google],
 });
+// Modified on 2025-02-19 00:38:33
