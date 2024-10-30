@@ -13,3 +13,4 @@ export function formatCurrency(amount: number) {
   // For larger amounts, assume it's annual
   return `${formatted}/year`;
 }
+// Modified on 2025-02-19 00:38:32
