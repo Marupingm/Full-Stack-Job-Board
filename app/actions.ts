@@ -49,7 +49,7 @@ export async function createCompany(data: z.infer<typeof companySchema>) {
     data: {
       onboardingCompleted: true,
       userType: "COMPANY",
-      Company: {
+      company: {
         create: {
           ...validatedData,
         },
@@ -81,7 +81,7 @@ export async function createJobSeeker(data: z.infer<typeof jobSeekerSchema>) {
     data: {
       onboardingCompleted: true,
       userType: "JOB_SEEKER",
-      JobSeeker: {
+      jobSeeker: {
         create: {
           ...validatedData,
         },
