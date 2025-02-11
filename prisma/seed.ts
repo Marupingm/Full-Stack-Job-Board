@@ -9,7 +9,7 @@ async function main() {
       data: {
         name: "Vodacom Group",
         location: "Johannesburg, Gauteng",
-        logo: "https://res.cloudinary.com/dqvgsqwop/image/upload/v1711123245/vodacom_logo_qqhwxd.png",
+        logo: "/images/companies/vodacom.png",
         website: "https://vodacom.com",
         xAccount: "@vodacom",
         about: "Leading African communications company providing mobile services and digital solutions.",
@@ -27,7 +27,7 @@ async function main() {
       data: {
         name: "Standard Bank",
         location: "Sandton, Gauteng",
-        logo: "https://res.cloudinary.com/dqvgsqwop/image/upload/v1711123245/standard_bank_logo_ixkwmf.png",
+        logo: "/images/companies/standard-bank.png",
         website: "https://standardbank.co.za",
         xAccount: "@standardbank",
         about: "Africa's largest bank by assets, providing comprehensive financial services.",
@@ -45,7 +45,7 @@ async function main() {
       data: {
         name: "Takealot",
         location: "Cape Town, Western Cape",
-        logo: "https://res.cloudinary.com/dqvgsqwop/image/upload/v1711123245/takealot_logo_kfwxvz.png",
+        logo: "/images/companies/takealot.png",
         website: "https://takealot.com",
         xAccount: "@takealot",
         about: "South Africa's leading e-commerce platform.",
@@ -613,9 +613,17 @@ What We Offer:
   // Create all job listings
   const allListings = [...saJobListings, ...internshipListings, ...partTimeListings, ...contractListings];
   
+  // Calculate dates for consistent listing durations
+  const baseDate = new Date('2023-11-15T10:00:00Z');
+  
   for (const job of allListings) {
     await prisma.jobPost.create({
-      data: job
+      data: {
+        ...job,
+        createdAt: baseDate,
+        listingDuration: 30, // Ensure all listings have the same duration
+        status: JobPostStatus.ACTIVE,
+      }
     })
   }
 

@@ -26,7 +26,7 @@ export default withUt({
           foreground: "hsl(var(--popover-foreground))",
         },
         primary: {
-          DEFAULT: "hsl(var(--primary))",
+          DEFAULT: "#25ba5d",
           foreground: "hsl(var(--primary-foreground))",
         },
         secondary: {

@@ -2,8 +2,6 @@ import Link from "next/link";
 
 import { Button, buttonVariants } from "../ui/button";
 import Image from "next/image";
-import Logo from "@/public/logo.png";
-
 import { Menu } from "lucide-react";
 import {
   Sheet,
@@ -16,6 +14,7 @@ import {
 import { auth } from "@/app/utils/auth";
 import { ThemeToggle } from "../ui/theme-toggle";
 import { UserDropdown } from "./UserDropdown";
+import Logo from "@/public/logo.png";
 
 export async function Navbar() {
   const session = await auth();
@@ -23,18 +22,24 @@ export async function Navbar() {
   return (
     <nav className="flex justify-between items-center py-5 relative z-50">
       <Link href="/" className="flex items-center gap-2">
-        <Image src={Logo} alt="Job Marshal Logo" width={40} height={40} />
+      <Image src={Logo} alt="Logo" className="size-10" />
         <h1 className="text-2xl font-bold">
-          Job<span className="text-primary">Marshal</span>
+          topsy<span className="text-primary">dev</span>
         </h1>
       </Link>
 
       {/* Desktop Navigation */}
       <div className="hidden md:flex items-center gap-5">
         <ThemeToggle />
-        <Link href="/post-job" className={buttonVariants({ size: "lg" })}>
-          Post Job
-        </Link>
+        {session?.user ? (
+          <Link href="/post-job" className={buttonVariants({ size: "lg" })}>
+            Post Job
+          </Link>
+        ) : (
+          <Link href="/api/auth/signin" className={buttonVariants({ size: "lg" })}>
+            Post Job
+          </Link>
+        )}
         {session?.user ? (
           <UserDropdown
             email={session.user.email as string}
@@ -43,10 +48,10 @@ export async function Navbar() {
           />
         ) : (
           <Link
-            href="/login"
+            href="/api/auth/signin"
             className={buttonVariants({ variant: "outline", size: "lg" })}
           >
-            Login
+            Sign In
           </Link>
         )}
       </div>
@@ -70,7 +75,7 @@ export async function Navbar() {
             <SheetContent className="w-[300px] sm:w-[400px]">
               <SheetHeader className="text-left">
                 <SheetTitle>
-                  Job<span className="text-primary">Marshal</span>
+                  topsy<span className="text-primary">dev</span>
                 </SheetTitle>
                 <SheetDescription>
                   Find or post your next job opportunity
@@ -85,16 +90,16 @@ export async function Navbar() {
                   Find New Job
                 </Link>
                 <Link
-                  href="/post-job"
+                  href="/api/auth/signin"
                   className="text-lg px-4 py-2 rounded-md bg-secondary hover:bg-secondary/80 transition-colors duration-200"
                 >
-                  Post a Job
+                  Post Job
                 </Link>
                 <Link
-                  href="/login"
+                  href="/api/auth/signin"
                   className="text-lg px-4 py-2 rounded-md bg-secondary hover:bg-secondary/80 transition-colors duration-200"
                 >
-                  Login
+                  Sign In
                 </Link>
               </div>
             </SheetContent>
