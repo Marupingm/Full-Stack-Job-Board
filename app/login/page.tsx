@@ -10,9 +10,9 @@ const LoginPage = () => {
       <div className="flex w-full max-w-sm flex-col gap-6">
         <Link href="/" className="flex items-center gap-2 self-center">
           <Image src={Logo} alt="Logo" className="size-10" />
-          <h1 className="text-2xl font-bold">
-            Job<span className="text-primary">Marshal</span>
-          </h1>
+          <span className="text-4xl font-bold">
+            topsy<span className="text-primary">dev</span>
+          </span>
         </Link>
         <LoginForm />
       </div>

@@ -35,9 +35,9 @@ export default function OnboardingForm() {
   return (
     <>
       <div className="flex items-center gap-3 mb-10">
-        <Image src={Logo} alt="JobMarshal Logo" width={50} height={50} />
+        <Image src={Logo} alt="topsydev Logo" width={50} height={50} />
         <span className="text-4xl font-bold">
-          Job<span className="text-primary">Marshal</span>
+          topsy<span className="text-primary">dev</span>
         </span>
       </div>
       <Card className="w-full max-w-lg">
